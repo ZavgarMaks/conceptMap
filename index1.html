@@ -9,17 +9,24 @@
       <div class="coordinates">
         <div class="latitude">
             <p>Latitude</p>
-            <div id=lat></div>
+            <input type="text" id=lat value="47.2421"></input>
         </div>
         <div class="longitude">
             <p> Longitude</p>
-            <div id="long"></input>
+            <input type="text" id="long" value="38.90"></input>
         </div>
       </div>
+      <!--Кнопка по которой будет запускаться функция смены координат маркера-->
+      <input type="button" id="find" value="Найти!">
       <div id="map"></div>  
-   
+ 
     <script>
+
   var marker;
+  // запись в переменные координат из инпута
+  var lat = document.getElementById("lat").value;
+  var lng = document.getElementById("long").value;
+
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 47.2421, lng: 38.90},
@@ -37,8 +44,18 @@
       coordsLat.textContent = event.latLng.lat()
       coordsLng.textContent = event.latLng.lng();
     });
+    //Функция изменения координат маркера
+    //передаю как аргументы данные записанные с инпутов в переменные
+    function changeMarkerPosition(marker) {
+    var latlng = new google.maps.LatLng('lat', 'lng');
+    marker.setPosition(latlng);
+    }
+    //устанавливаю обработчик функции по нажатию на кнопку
+    find.onclick = changeMarkerPosition;
+    
   };
     </script>
+   
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVn3fPEr4HDIrv8ul69NZgOZpKoX7mIxM&signed_in=true&callback=initMap"></script>
     
