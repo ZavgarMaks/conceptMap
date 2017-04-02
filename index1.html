@@ -13,35 +13,29 @@
         </div>
         <div class="longitude">
             <p> Longitude</p>
-            <div id="long"></div>
+            <div id="long"></input>
         </div>
       </div>
       <div id="map"></div>  
- 
+   
     <script>
-
   var marker;
-
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 47.2421, lng: 38.90},
       zoom: 8
     });
-
-    var coordsDiv = document.getElementById('lat');
-    map.addListener('mouseup', function(event) {
-      coordsDiv.textContent = event.latLng.lat()
-    });
-     var coordsDivv = document.getElementById('long');
-    map.addListener('mouseup', function(event) {
-      coordsDivv.textContent = event.latLng.lng();
-    });
-
     marker = new google.maps.Marker({
       map: map,
       draggable: true,
       animation: google.maps.Animation.DROP,
       position: {lat: 47.2421, lng: 38.90}
+    });
+    var coordsLat = document.getElementById('lat');
+    var coordsLng = document.getElementById('long');
+    google.maps.event.addListener(marker,'dragend', function(event) {
+      coordsLat.textContent = event.latLng.lat()
+      coordsLng.textContent = event.latLng.lng();
     });
   };
     </script>
