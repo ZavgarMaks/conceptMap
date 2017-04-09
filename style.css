@@ -34,3 +34,19 @@
     height: 20px;
     position: relative;
 }
+#number1 { 
+    background-color: white; 
+    color: black; 
+    border: 2px solid black;
+    height: 20px; 
+    width: 200px;
+    position: relative;
+}
+#number2 { 
+    background-color: white; 
+    color: black; 
+    border: 2px solid black;
+    width: 200px;
+    height: 20px;
+    position: relative;
+}

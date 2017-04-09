@@ -9,23 +9,20 @@
       <div class="coordinates">
         <div class="latitude">
             <p>Latitude</p>
-            <input type="text" id=lat value="47.2421"></input>
+            <input type="text" id="lat" value="47.2421"></input>
         </div>
         <div class="longitude">
             <p> Longitude</p>
             <input type="text" id="long" value="38.90"></input>
         </div>
       </div>
-      <!--Кнопка по которой будет запускаться функция смены координат маркера-->
-      <input type="button" id="find" value="Найти!">
+      <input type="button" id="setCoordinates" onclick="changeMarkerPosition(marker)" value="Найти!">
       <div id="map"></div>  
  
     <script>
 
   var marker;
-  // запись в переменные координат из инпута
-  var lat = document.getElementById("lat").value;
-  var lng = document.getElementById("long").value;
+  
 
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -38,22 +35,21 @@
       animation: google.maps.Animation.DROP,
       position: {lat: 47.2421, lng: 38.90}
     });
-    var coordsLat = document.getElementById('lat');
-    var coordsLng = document.getElementById('long');
-    google.maps.event.addListener(marker,'dragend', function(event) {
-      coordsLat.textContent = event.latLng.lat()
-      coordsLng.textContent = event.latLng.lng();
-    });
-    //Функция изменения координат маркера
-    //передаю как аргументы данные записанные с инпутов в переменные
-    function changeMarkerPosition(marker) {
-    var latlng = new google.maps.LatLng('lat', 'lng');
-    marker.setPosition(latlng);
-    }
-    //устанавливаю обработчик функции по нажатию на кнопку
-    find.onclick = changeMarkerPosition;
     
+    google.maps.event.addListener(marker,'dragend', function(event) {
+      document.getElementById('lat').value = event.latLng.lat();
+      document.getElementById('long').value = event.latLng.lng();
+    });
   };
+  function changeMarkerPosition(marker) {
+      var latValue = document.getElementById("lat").value;
+      var lngValue = document.getElementById("long").value;
+      var latNumber = latValue*1;
+      var lngNumber = lngValue*1;
+      var latlng = new google.maps.LatLng(latNumber, lngNumber);
+      google.maps.Marker.setPosition(latlng);
+      google.maps.Map.setCenter(latlng);
+    }
     </script>
    
     <script async defer
