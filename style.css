@@ -1,52 +1,48 @@
+body {
+    background-color: gainsboro
+}
 #map {
     height: 500px;
-    width: 800px;
-    margin: 50px auto;
+    width: 90%;
+    margin: 0 auto;
     position: relative;
+    border-radius: 5px;
 }
 .coordinates {
-    width: 800px;
+    width: 80%;
     height: auto;
-    margin: 50px auto;
+    margin: 30px auto;
 }
-.latitude {
-    width: 400px;
+.coordinates p {
+    display: inline-block;
+}
+.coordinates div {
+    display: inline-block;
+}
+.block-name {
+    width: 32%;
     margin-left: 0;
+    background: linear-gradient(to top,#059,#fff);
+    letter-spacing: 1.5px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
 }
-.longitude {
-    width: 400px;
-    margin-right: 0;
-    margin: -75px 0px 0px 400px;
-}
-#lat { 
-    background-color: white; 
-    color: black; 
-    border: 2px solid black;
-    height: 20px; 
-    width: 200px;
-    position: relative;
-}
-#long { 
-    background-color: white; 
-    color: black; 
-    border: 2px solid black;
-    width: 200px;
+.coords-input { 
+    background-color: white;
+    color: black;
+    border: 1px solid #059;
     height: 20px;
+    width: 59%;
     position: relative;
 }
-#number1 { 
-    background-color: white; 
-    color: black; 
-    border: 2px solid black;
-    height: 20px; 
-    width: 200px;
-    position: relative;
-}
-#number2 { 
-    background-color: white; 
-    color: black; 
-    border: 2px solid black;
-    width: 200px;
-    height: 20px;
-    position: relative;
+#button-coords {
+    width: 33%;
+    padding: 13px;
+    border-radius: 5px;
+    font-size: 20px;
+    background: linear-gradient(to top,#059,#fff);
+    letter-spacing: 1.5px;
+    color: white;
+    font-weight: bold;
 }

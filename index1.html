@@ -4,56 +4,26 @@
     <meta charset="utf-8">
     <title>ConceptMaps</title>
     <link rel="stylesheet" href="style.css"> 
+    <script src="script.js"> </script>
   </head>
   <body>
-      <div class="coordinates">
-        <div class="latitude">
-            <p>Latitude</p>
-            <input type="text" id="lat" value="47.2421"></input>
-        </div>
-        <div class="longitude">
-            <p> Longitude</p>
-            <input type="text" id="long" value="38.90"></input>
-        </div>
+    <div class="coordinates">
+      <div class="block-name">
+          <p>Latitude</p>
+          <input type="text" id="lat" class="coords-input" value="47.2421"></input>
       </div>
-      <input type="button" id="setCoordinates" onclick="changeMarkerPosition(marker)" value="Найти!">
-      <div id="map"></div>  
- 
-    <script>
-
-  var marker;
-  
-
-  function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 47.2421, lng: 38.90},
-      zoom: 8
-    });
-    marker = new google.maps.Marker({
-      map: map,
-      draggable: true,
-      animation: google.maps.Animation.DROP,
-      position: {lat: 47.2421, lng: 38.90}
-    });
+      <div class="block-name">
+          <p> Longitude</p>
+          <input type="text" id="long" class="coords-input" value="38.90"></input>
+      </div>
+      <input type="button" id="button-coords" onclick="changeMarkerPosition()" value="SET POSITION!">
+    </div>
     
-    google.maps.event.addListener(marker,'dragend', function(event) {
-      document.getElementById('lat').value = event.latLng.lat();
-      document.getElementById('long').value = event.latLng.lng();
-    });
-  };
-  function changeMarkerPosition(marker) {
-      var latValue = document.getElementById("lat").value;
-      var lngValue = document.getElementById("long").value;
-      var latNumber = latValue*1;
-      var lngNumber = lngValue*1;
-      var latlng = new google.maps.LatLng(latNumber, lngNumber);
-      google.maps.Marker.setPosition(latlng);
-      google.maps.Map.setCenter(latlng);
-    }
-    </script>
-   
+    <div id="map"></div>  
+ 
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVn3fPEr4HDIrv8ul69NZgOZpKoX7mIxM&signed_in=true&callback=initMap"></script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVn3fPEr4HDIrv8ul69NZgOZpKoX7mIxM&signed_in=true&callback=initMap">
+    </script>
     
   </body>
 </html>
